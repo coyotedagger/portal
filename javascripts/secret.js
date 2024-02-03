@@ -2,8 +2,6 @@ $( document ).ready(function() {
   $(".draggable").draggable();
   // $(".project-icons").draggable();
 
-  $(".draggable h2").css("cursor", "pointer");
-
   $(".draggable").mousedown(function() {
    // lower other elements
    $(this).siblings(".draggable").each(function() {
@@ -21,10 +19,6 @@ $( document ).ready(function() {
 
   $("#photo-icon").click(function () {
     $("#headshot").show();
-  });
-
-  $("#video-icon").click(function () {
-    $("#disco").show();
   });
 
   $("#text-icon").click(function () {
