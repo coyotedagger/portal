@@ -1,15 +1,24 @@
 $( document ).ready(function() {
   $(".draggable").draggable();
-  // $(".project-icons").draggable();
 
+
+  // z-index order is tricky... basically need to keep track of
+  // where in the ranking the div lies (i.e. is it 1st, 2nd, etc).
+  // clicking to open something will ALWAYS make it 1st.
+  // clicking to drag something will ALWAYS make it 1st.
+  // the order of anything else should STAY THE SAME -- they just
+  // all get bumped down... or don't change.
+  // because only everything between the two items should change.
+  // this is actually a complex function...
   $(".draggable").mousedown(function() {
    // lower other elements
    $(this).siblings(".draggable").each(function() {
     var zindex = $(this).css("z-index");
-    $(this).css("z-index", --zindex);
+    $(this).css("z-index", 5);
    })
 
    // set clicked element to a higher level
+   var zindex = $(this).css("z-index");
    $(this).css("z-index", 10);
   });
 
@@ -24,6 +33,17 @@ $( document ).ready(function() {
   $("#text-icon").click(function () {
     $("#about").show();
   });
+
+  $("#fantom-link").click(function () {
+    $("#fantom").css("z-index", 10);
+    $("#fantom").show();
+  });
+
+  $("#tenebra-link").click(function () {
+    $("#tenebra").css("z-index", 10);
+    $("#tenebra").show();
+  });
+
 
   setInterval('updateClock()', 1000);
 });
