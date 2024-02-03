@@ -39,6 +39,16 @@ $( document ).ready(function() {
     $("#tenebra").show();
   });
 
+  $("#casestudy1-link").click(function () {
+    $("#study1").css("z-index", 10);
+    $("#study1").show();
+  });
+
+  $("#casestudy2-link").click(function () {
+    $("#study2").css("z-index", 10);
+    $("#study2").show();
+  });
+
 });
 
 
