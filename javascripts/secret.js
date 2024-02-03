@@ -1,12 +1,41 @@
 $( document ).ready(function() {
   $(".draggable").draggable();
+  // $(".project-icons").draggable();
+
+  $(".draggable h2").css("cursor", "pointer");
+
+  $(".draggable").mousedown(function() {
+   // lower other elements
+   $(this).siblings(".draggable").each(function() {
+    var zindex = $(this).css("z-index");
+    $(this).css("z-index", --zindex);
+   })
+
+   // set clicked element to a higher level
+   $(this).css("z-index", 10);
+  });
+
+  $(".draggable h2").click(function() {
+    $(this).parent().parent().hide();
+  });
+
+  $("#photo-icon").click(function () {
+    $("#headshot").show();
+  });
+
+  $("#video-icon").click(function () {
+    $("#disco").show();
+  });
+
+  $("#text-icon").click(function () {
+    $("#about").show();
+  });
 
   setInterval('updateClock()', 1000);
 });
 
 function updateClock(){
   var now = new Date();
-  console.log(now);
   var currentHours = now.getHours();
   var currentMinutes = now.getMinutes();
   var timeOfDay;
