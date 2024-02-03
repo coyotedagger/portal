@@ -1,25 +1,18 @@
 $( document ).ready(function() {
+  setInterval('updateClock()', 1000);
+
   $(".draggable").draggable();
 
-
-  // z-index order is tricky... basically need to keep track of
-  // where in the ranking the div lies (i.e. is it 1st, 2nd, etc).
-  // clicking to open something will ALWAYS make it 1st.
-  // clicking to drag something will ALWAYS make it 1st.
-  // the order of anything else should STAY THE SAME -- they just
-  // all get bumped down... or don't change.
-  // because only everything between the two items should change.
-  // this is actually a complex function...
   $(".draggable").mousedown(function() {
-   // lower other elements
-   $(this).siblings(".draggable").each(function() {
-    var zindex = $(this).css("z-index");
-    $(this).css("z-index", 5);
-   })
+    // lower other elements
+    $(this).siblings(".draggable").each(function() {
+      var zindex = $(this).css("z-index");
+      $(this).css("z-index", --zindex);
+    })
 
-   // set clicked element to a higher level
-   var zindex = $(this).css("z-index");
-   $(this).css("z-index", 10);
+    // set clicked element to a higher level
+    var zindex = $(this).css("z-index");
+    $(this).css("z-index", 10);
   });
 
   $(".draggable h2").click(function() {
@@ -28,10 +21,12 @@ $( document ).ready(function() {
 
   $("#photo-icon").click(function () {
     $("#headshot").show();
+    console.log($("#headshot").css("z-index"));
   });
 
   $("#text-icon").click(function () {
     $("#about").show();
+    console.log($("#text-icon").css("z-index"));
   });
 
   $("#fantom-link").click(function () {
@@ -44,9 +39,29 @@ $( document ).ready(function() {
     $("#tenebra").show();
   });
 
-
-  setInterval('updateClock()', 1000);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function updateClock(){
   var now = new Date();
