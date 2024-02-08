@@ -49,6 +49,11 @@ $( document ).ready(function() {
     $("#study2").show();
   });
 
+  $("#casestudy3-link").click(function () {
+    $("#study3").css("z-index", 10);
+    $("#study3").show();
+  });
+
 });
 
 
